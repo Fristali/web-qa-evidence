@@ -19,6 +19,10 @@ CSV_FIELDS = ("id", "title", "status", "severity", "steps", "expected", "actual"
 def require_text(value, field):
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"{field} must be a nonempty string")
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as error:
+        raise ValueError(f"{field} must be valid UTF-8 text") from error
 
 
 def require_strings(value, field, nonempty=False):

@@ -247,6 +247,28 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Unspecified", (self.output / "report.html").read_text())
 
+    def test_rejects_non_utf8_text_before_creating_output(self):
+        valid = copy.deepcopy(self.data)
+        (self.source / "valid.png").write_bytes(PNG)
+        for index, (mutate, field) in enumerate([
+            (lambda d: d.update(title="\ud800"), "title"),
+            (lambda d: d["cases"][0].update(actual="\udfff"), "actual"),
+            (lambda d: d["environment"].update(viewports=["\ud800"]), "viewports"),
+            (lambda d: d["cases"][0].update(steps=["\ud800"]), "steps"),
+            (lambda d: d.update(limitations=["\ud800"]), "limitations"),
+        ]):
+            with self.subTest(field=field):
+                self.data = copy.deepcopy(valid)
+                self.data["cases"][0]["evidence"] = ["valid.png"]
+                self.output = self.root / f"invalid-text-{index}"
+                mutate(self.data)
+                result = self.run_cli()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertNotIn("Traceback", result.stderr)
+                self.assertFalse(self.output.exists(), "Invalid text must not create partial reports or assets")
+                self.assertIn(field, result.stderr)
+                self.assertIn("UTF-8", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
