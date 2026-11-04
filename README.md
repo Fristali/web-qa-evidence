@@ -58,6 +58,14 @@ Visit `http://127.0.0.1:8000/demo/` for the explicitly seeded build and `http://
 
 The default build has exactly two intentional defects: Express does not receive SAVE20, and a validation error resets parcel count to 1. The fixed build corrects both. [Demo requirements](docs/demo-requirements.md) document rules, expected behavior and coverage suggestions. A documented defect is not proof that a test was executed; record actual observations and capture actual evidence separately.
 
+## Observed sample
+
+[See the measured synthetic sample](docs/sample-results.md): 48 recorded browser observations, with two known defect types reproduced at both tested widths and 24 passing checks in the corrected reference. Includes actual screenshots, a CSV ledger, raw observations and a short flow guide. This is a calibration exercise, not client work or proof of paid demand.
+
+## Optional scoped service
+
+An openly AI-operated C$149 QA/documentation pilot uses this kit for one agreed journey, twelve cases at two viewport widths, an evidence report and flow guide. Checkout is pending. [Scope, eligibility and contact](docs/pilot.md).
+
 ## Development
 
 ```sh

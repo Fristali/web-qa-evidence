@@ -1,0 +1,1339 @@
+{
+  "provenance": {
+    "fixture_commit": "cc864bf4110bca6b5216c60546470dc5ff9a0cf1",
+    "fixture_sha256": "c420375941097f3f66d26c73f161c77ec3b12e63cb847f0d07166e0678367359",
+    "first_retained_observation": "2026-11-04T23:51:32.518Z",
+    "last_retained_observation": "2026-11-04T23:53:59.118Z",
+    "method": "CUA browser UI actions and read-only DOM observations; synthetic data; explicitly known seeded defects",
+    "environment": {
+      "browser": "Google Chrome 156.0.8078.80",
+      "os": "macOS 26.5.2",
+      "planned_viewports": [
+        "1280x900",
+        "390x844"
+      ]
+    }
+  },
+  "observations": [
+    {
+      "id": "C01-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Required name",
+      "inputs": {
+        "name": ""
+      },
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a name.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:32.518Z"
+    },
+    {
+      "id": "C02-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Parcel count survives email validation",
+      "inputs": {
+        "email": "invalid",
+        "parcels": "3"
+      },
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a valid email address.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:33.190Z",
+      "evidence": "evidence/fixed-desktop-C02.jpg"
+    },
+    {
+      "id": "C03-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Standard base price",
+      "inputs": {},
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:33.907Z"
+    },
+    {
+      "id": "C04-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Standard additional parcels",
+      "inputs": {
+        "parcels": "3"
+      },
+      "expected": "Visible total C$12.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$12.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:34.583Z"
+    },
+    {
+      "id": "C05-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Express additional parcels",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3"
+      },
+      "expected": "Visible total C$20.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "express",
+        "total": "C$20.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:35.265Z"
+    },
+    {
+      "id": "C06-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Standard SAVE20",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$9.60",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$9.60",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:35.977Z"
+    },
+    {
+      "id": "C07-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Express SAVE20",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$16.00",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "express",
+        "total": "C$16.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:36.678Z",
+      "evidence": "evidence/fixed-desktop-C07.jpg"
+    },
+    {
+      "id": "C08-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Unknown coupon",
+      "inputs": {
+        "coupon": "NOPE"
+      },
+      "expected": "Inline coupon error, no quote",
+      "actual": {
+        "coupon": "NOPE",
+        "email": "<redacted>",
+        "errors": [
+          "Coupon not recognized. Use SAVE20 or leave blank.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:37.437Z"
+    },
+    {
+      "id": "C09-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Minimum accepted weight",
+      "inputs": {
+        "weight": "0.1"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "0.1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:38.127Z"
+    },
+    {
+      "id": "C10-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Maximum accepted weight",
+      "inputs": {
+        "weight": "10"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "10",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:38.813Z"
+    },
+    {
+      "id": "C11-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Above maximum weight",
+      "inputs": {
+        "weight": "10.1"
+      },
+      "expected": "Inline weight error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a weight from 0.1 to 10 kg.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "10.1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:39.497Z"
+    },
+    {
+      "id": "C12-fixed-desktop",
+      "build": "fixed",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Reset clears populated quote",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "",
+        "errors": [],
+        "height": 900,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:51:40.485Z"
+    },
+    {
+      "id": "C01-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Required name",
+      "inputs": {
+        "name": ""
+      },
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a name.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:06.885Z"
+    },
+    {
+      "id": "C02-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "fail",
+      "title": "Parcel count survives email validation",
+      "inputs": {
+        "email": "invalid",
+        "parcels": "3"
+      },
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a valid email address.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:07.550Z",
+      "evidence": "evidence/seeded-mobile-C02.jpg"
+    },
+    {
+      "id": "C03-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Standard base price",
+      "inputs": {},
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:08.295Z"
+    },
+    {
+      "id": "C04-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Standard additional parcels",
+      "inputs": {
+        "parcels": "3"
+      },
+      "expected": "Visible total C$12.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$12.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:08.979Z"
+    },
+    {
+      "id": "C05-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Express additional parcels",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3"
+      },
+      "expected": "Visible total C$20.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "express",
+        "total": "C$20.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:09.647Z"
+    },
+    {
+      "id": "C06-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Standard SAVE20",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$9.60",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$9.60",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:10.319Z"
+    },
+    {
+      "id": "C07-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "fail",
+      "title": "Express SAVE20",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$16.00",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "express",
+        "total": "C$20.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:10.970Z",
+      "evidence": "evidence/seeded-mobile-C07.jpg"
+    },
+    {
+      "id": "C08-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Unknown coupon",
+      "inputs": {
+        "coupon": "NOPE"
+      },
+      "expected": "Inline coupon error, no quote",
+      "actual": {
+        "coupon": "NOPE",
+        "email": "<redacted>",
+        "errors": [
+          "Coupon not recognized. Use SAVE20 or leave blank.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:11.905Z"
+    },
+    {
+      "id": "C09-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Minimum accepted weight",
+      "inputs": {
+        "weight": "0.1"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "0.1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:12.845Z"
+    },
+    {
+      "id": "C10-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Maximum accepted weight",
+      "inputs": {
+        "weight": "10"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "10",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:13.551Z"
+    },
+    {
+      "id": "C11-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Above maximum weight",
+      "inputs": {
+        "weight": "10.1"
+      },
+      "expected": "Inline weight error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a weight from 0.1 to 10 kg.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "10.1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:14.478Z"
+    },
+    {
+      "id": "C12-seeded-mobile",
+      "build": "seeded",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Reset clears populated quote",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "",
+        "errors": [],
+        "height": 844,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:15.612Z"
+    },
+    {
+      "id": "C01-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Required name",
+      "inputs": {
+        "name": ""
+      },
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a name.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:52.248Z"
+    },
+    {
+      "id": "C02-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Parcel count survives email validation",
+      "inputs": {
+        "email": "invalid",
+        "parcels": "3"
+      },
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a valid email address.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:52.909Z",
+      "evidence": "evidence/fixed-mobile-C02.jpg"
+    },
+    {
+      "id": "C03-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Standard base price",
+      "inputs": {},
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:53.673Z"
+    },
+    {
+      "id": "C04-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Standard additional parcels",
+      "inputs": {
+        "parcels": "3"
+      },
+      "expected": "Visible total C$12.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$12.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:54.363Z"
+    },
+    {
+      "id": "C05-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Express additional parcels",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3"
+      },
+      "expected": "Visible total C$20.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "express",
+        "total": "C$20.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:55.011Z"
+    },
+    {
+      "id": "C06-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Standard SAVE20",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$9.60",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$9.60",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:55.666Z"
+    },
+    {
+      "id": "C07-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Express SAVE20",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$16.00",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "express",
+        "total": "C$16.00",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:56.312Z",
+      "evidence": "evidence/fixed-mobile-C07.jpg"
+    },
+    {
+      "id": "C08-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Unknown coupon",
+      "inputs": {
+        "coupon": "NOPE"
+      },
+      "expected": "Inline coupon error, no quote",
+      "actual": {
+        "coupon": "NOPE",
+        "email": "<redacted>",
+        "errors": [
+          "Coupon not recognized. Use SAVE20 or leave blank.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:57.075Z"
+    },
+    {
+      "id": "C09-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Minimum accepted weight",
+      "inputs": {
+        "weight": "0.1"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "0.1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:57.765Z"
+    },
+    {
+      "id": "C10-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Maximum accepted weight",
+      "inputs": {
+        "weight": "10"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "10",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:58.460Z"
+    },
+    {
+      "id": "C11-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Above maximum weight",
+      "inputs": {
+        "weight": "10.1"
+      },
+      "expected": "Inline weight error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a weight from 0.1 to 10 kg.",
+          "Check 1 highlighted field."
+        ],
+        "height": 844,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "10.1",
+        "width": 390
+      },
+      "at": "2026-11-04T23:52:59.128Z"
+    },
+    {
+      "id": "C12-fixed-mobile",
+      "build": "fixed",
+      "viewport": "390x844",
+      "status": "pass",
+      "title": "Reset clears populated quote",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "",
+        "errors": [],
+        "height": 844,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 390,
+        "service": "standard",
+        "total": "",
+        "weight": "",
+        "width": 390
+      },
+      "at": "2026-11-04T23:53:00.093Z"
+    },
+    {
+      "id": "C01-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Required name",
+      "inputs": {
+        "name": ""
+      },
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a name.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:50.974Z"
+    },
+    {
+      "id": "C02-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "fail",
+      "title": "Parcel count survives email validation",
+      "inputs": {
+        "email": "invalid",
+        "parcels": "3"
+      },
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a valid email address.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:51.730Z",
+      "evidence": "evidence/seeded-desktop-C02.jpg"
+    },
+    {
+      "id": "C03-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Standard base price",
+      "inputs": {},
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:52.448Z"
+    },
+    {
+      "id": "C04-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Standard additional parcels",
+      "inputs": {
+        "parcels": "3"
+      },
+      "expected": "Visible total C$12.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$12.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:53.162Z"
+    },
+    {
+      "id": "C05-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Express additional parcels",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3"
+      },
+      "expected": "Visible total C$20.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "express",
+        "total": "C$20.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:53.858Z"
+    },
+    {
+      "id": "C06-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Standard SAVE20",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$9.60",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$9.60",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:54.563Z"
+    },
+    {
+      "id": "C07-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "fail",
+      "title": "Express SAVE20",
+      "inputs": {
+        "service": "Express",
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Visible total C$16.00",
+      "actual": {
+        "coupon": "SAVE20",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "3",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "express",
+        "total": "C$20.00",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:55.317Z",
+      "evidence": "evidence/seeded-desktop-C07.jpg"
+    },
+    {
+      "id": "C08-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Unknown coupon",
+      "inputs": {
+        "coupon": "NOPE"
+      },
+      "expected": "Inline coupon error, no quote",
+      "actual": {
+        "coupon": "NOPE",
+        "email": "<redacted>",
+        "errors": [
+          "Coupon not recognized. Use SAVE20 or leave blank.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:56.018Z"
+    },
+    {
+      "id": "C09-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Minimum accepted weight",
+      "inputs": {
+        "weight": "0.1"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "0.1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:56.737Z"
+    },
+    {
+      "id": "C10-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Maximum accepted weight",
+      "inputs": {
+        "weight": "10"
+      },
+      "expected": "Visible total C$8.00",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": false,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "C$8.00",
+        "weight": "10",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:57.443Z"
+    },
+    {
+      "id": "C11-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Above maximum weight",
+      "inputs": {
+        "weight": "10.1"
+      },
+      "expected": "Inline weight error, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "<redacted>",
+        "errors": [
+          "Enter a weight from 0.1 to 10 kg.",
+          "Check 1 highlighted field."
+        ],
+        "height": 900,
+        "name": "Sample Tester",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "10.1",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:58.129Z"
+    },
+    {
+      "id": "C12-seeded-desktop",
+      "build": "seeded",
+      "viewport": "1280x900",
+      "status": "pass",
+      "title": "Reset clears populated quote",
+      "inputs": {
+        "parcels": "3",
+        "coupon": "SAVE20"
+      },
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": {
+        "coupon": "",
+        "email": "",
+        "errors": [],
+        "height": 900,
+        "name": "",
+        "parcels": "1",
+        "resultHidden": true,
+        "scrollWidth": 1280,
+        "service": "standard",
+        "total": "",
+        "weight": "",
+        "width": 1280
+      },
+      "at": "2026-11-04T23:53:59.118Z"
+    }
+  ]
+}

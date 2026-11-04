@@ -1,0 +1,720 @@
+{
+  "title": "Pickup quote — observed QA calibration",
+  "build": "Synthetic seeded and fixed reference; fixture SHA-256 c420375941097f3f66d26c73f161c77ec3b12e63cb847f0d07166e0678367359",
+  "tested_at": "2026-11-04T23:51:32.518Z through 2026-11-04T23:53:59.118Z",
+  "environment": {
+    "browser": "Google Chrome 156.0.8078.80",
+    "os": "macOS 26.5.2",
+    "viewports": [
+      "1280x900 desktop viewport",
+      "390x844 narrow viewport; not a physical phone"
+    ]
+  },
+  "scope": "Original synthetic fixture, not client work. Twelve logical cases × two viewport sizes × two reference builds = 48 retained execution rows: seeded build 20 pass / 4 fail; fixed build 24 pass. The four failed rows represent two deliberately seeded defect types, each reproduced at both widths. An AI operator executed the checks in the browser. This demonstrates calibration and reporting; it does not establish blind discovery of unknown production defects.",
+  "limitations": [
+    "Synthetic demonstration only; no customer, purchase or revenue.",
+    "One installed desktop Chrome and two viewport sizes; no physical phone or cross-browser coverage.",
+    "Known defects were specified before testing; passing checks do not prove defect-free production software.",
+    "No backend, authentication, real booking, real payment, security audit, accessibility certification, load or complete business-rule coverage.",
+    "Screenshots show fictional Sample Tester/example.com inputs. All actual observations are preserved in observations.json.",
+    "Earlier exploratory runs were superseded by these 48 final-file observations and are not counted twice."
+  ],
+  "cases": [
+    {
+      "id": "C01-seeded-desktop",
+      "title": "Required name — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": "Observed 2026-11-04T23:53:50.974Z. No quote displayed. Parcel count: 1. Errors: Enter a name.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C02-seeded-desktop",
+      "title": "Parcel count survives email validation — seeded, 1280x900",
+      "status": "fail",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"invalid\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": "Observed 2026-11-04T23:53:51.730Z. No quote displayed. Parcel count: 1. Errors: Enter a valid email address.; Check 1 highlighted field..",
+      "evidence": [
+        "evidence/seeded-desktop-C02.jpg"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "C03-seeded-desktop",
+      "title": "Standard base price — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:53:52.448Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C04-seeded-desktop",
+      "title": "Standard additional parcels — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$12.00",
+      "actual": "Observed 2026-11-04T23:53:53.162Z. Displayed total C$12.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C05-seeded-desktop",
+      "title": "Express additional parcels — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$20.00",
+      "actual": "Observed 2026-11-04T23:53:53.858Z. Displayed total C$20.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C06-seeded-desktop",
+      "title": "Standard SAVE20 — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$9.60",
+      "actual": "Observed 2026-11-04T23:53:54.563Z. Displayed total C$9.60. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C07-seeded-desktop",
+      "title": "Express SAVE20 — seeded, 1280x900",
+      "status": "fail",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$16.00",
+      "actual": "Observed 2026-11-04T23:53:55.317Z. Displayed total C$20.00. Parcel count: 3. Errors: none.",
+      "evidence": [
+        "evidence/seeded-desktop-C07.jpg"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "C08-seeded-desktop",
+      "title": "Unknown coupon — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"NOPE\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline coupon error, no quote",
+      "actual": "Observed 2026-11-04T23:53:56.018Z. No quote displayed. Parcel count: 1. Errors: Coupon not recognized. Use SAVE20 or leave blank.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C09-seeded-desktop",
+      "title": "Minimum accepted weight — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"0.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:53:56.737Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C10-seeded-desktop",
+      "title": "Maximum accepted weight — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:53:57.443Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C11-seeded-desktop",
+      "title": "Above maximum weight — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline weight error, no quote",
+      "actual": "Observed 2026-11-04T23:53:58.129Z. No quote displayed. Parcel count: 1. Errors: Enter a weight from 0.1 to 10 kg.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C12-seeded-desktop",
+      "title": "Reset clears populated quote — seeded, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote.",
+        "Click Reset form after the quote appears."
+      ],
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": "Observed 2026-11-04T23:53:59.118Z. No quote displayed. Parcel count: 1. Errors: none. Name/email/weight/coupon empty; service=standard.",
+      "evidence": []
+    },
+    {
+      "id": "C01-seeded-mobile",
+      "title": "Required name — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": "Observed 2026-11-04T23:52:06.885Z. No quote displayed. Parcel count: 1. Errors: Enter a name.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C02-seeded-mobile",
+      "title": "Parcel count survives email validation — seeded, 390x844",
+      "status": "fail",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"invalid\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": "Observed 2026-11-04T23:52:07.550Z. No quote displayed. Parcel count: 1. Errors: Enter a valid email address.; Check 1 highlighted field..",
+      "evidence": [
+        "evidence/seeded-mobile-C02.jpg"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "C03-seeded-mobile",
+      "title": "Standard base price — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:52:08.295Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C04-seeded-mobile",
+      "title": "Standard additional parcels — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$12.00",
+      "actual": "Observed 2026-11-04T23:52:08.979Z. Displayed total C$12.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C05-seeded-mobile",
+      "title": "Express additional parcels — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$20.00",
+      "actual": "Observed 2026-11-04T23:52:09.647Z. Displayed total C$20.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C06-seeded-mobile",
+      "title": "Standard SAVE20 — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$9.60",
+      "actual": "Observed 2026-11-04T23:52:10.319Z. Displayed total C$9.60. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C07-seeded-mobile",
+      "title": "Express SAVE20 — seeded, 390x844",
+      "status": "fail",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$16.00",
+      "actual": "Observed 2026-11-04T23:52:10.970Z. Displayed total C$20.00. Parcel count: 3. Errors: none.",
+      "evidence": [
+        "evidence/seeded-mobile-C07.jpg"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "C08-seeded-mobile",
+      "title": "Unknown coupon — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"NOPE\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline coupon error, no quote",
+      "actual": "Observed 2026-11-04T23:52:11.905Z. No quote displayed. Parcel count: 1. Errors: Coupon not recognized. Use SAVE20 or leave blank.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C09-seeded-mobile",
+      "title": "Minimum accepted weight — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"0.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:52:12.845Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C10-seeded-mobile",
+      "title": "Maximum accepted weight — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:52:13.551Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C11-seeded-mobile",
+      "title": "Above maximum weight — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline weight error, no quote",
+      "actual": "Observed 2026-11-04T23:52:14.478Z. No quote displayed. Parcel count: 1. Errors: Enter a weight from 0.1 to 10 kg.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C12-seeded-mobile",
+      "title": "Reset clears populated quote — seeded, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=seeded at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote.",
+        "Click Reset form after the quote appears."
+      ],
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": "Observed 2026-11-04T23:52:15.612Z. No quote displayed. Parcel count: 1. Errors: none. Name/email/weight/coupon empty; service=standard.",
+      "evidence": []
+    },
+    {
+      "id": "C01-fixed-desktop",
+      "title": "Required name — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": "Observed 2026-11-04T23:51:32.518Z. No quote displayed. Parcel count: 1. Errors: Enter a name.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C02-fixed-desktop",
+      "title": "Parcel count survives email validation — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"invalid\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": "Observed 2026-11-04T23:51:33.190Z. No quote displayed. Parcel count: 3. Errors: Enter a valid email address.; Check 1 highlighted field..",
+      "evidence": [
+        "evidence/fixed-desktop-C02.jpg"
+      ]
+    },
+    {
+      "id": "C03-fixed-desktop",
+      "title": "Standard base price — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:51:33.907Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C04-fixed-desktop",
+      "title": "Standard additional parcels — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$12.00",
+      "actual": "Observed 2026-11-04T23:51:34.583Z. Displayed total C$12.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C05-fixed-desktop",
+      "title": "Express additional parcels — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$20.00",
+      "actual": "Observed 2026-11-04T23:51:35.265Z. Displayed total C$20.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C06-fixed-desktop",
+      "title": "Standard SAVE20 — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$9.60",
+      "actual": "Observed 2026-11-04T23:51:35.977Z. Displayed total C$9.60. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C07-fixed-desktop",
+      "title": "Express SAVE20 — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$16.00",
+      "actual": "Observed 2026-11-04T23:51:36.678Z. Displayed total C$16.00. Parcel count: 3. Errors: none.",
+      "evidence": [
+        "evidence/fixed-desktop-C07.jpg"
+      ]
+    },
+    {
+      "id": "C08-fixed-desktop",
+      "title": "Unknown coupon — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"NOPE\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline coupon error, no quote",
+      "actual": "Observed 2026-11-04T23:51:37.437Z. No quote displayed. Parcel count: 1. Errors: Coupon not recognized. Use SAVE20 or leave blank.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C09-fixed-desktop",
+      "title": "Minimum accepted weight — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"0.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:51:38.127Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C10-fixed-desktop",
+      "title": "Maximum accepted weight — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:51:38.813Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C11-fixed-desktop",
+      "title": "Above maximum weight — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline weight error, no quote",
+      "actual": "Observed 2026-11-04T23:51:39.497Z. No quote displayed. Parcel count: 1. Errors: Enter a weight from 0.1 to 10 kg.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C12-fixed-desktop",
+      "title": "Reset clears populated quote — fixed, 1280x900",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 1280x900 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote.",
+        "Click Reset form after the quote appears."
+      ],
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": "Observed 2026-11-04T23:51:40.485Z. No quote displayed. Parcel count: 1. Errors: none. Name/email/weight/coupon empty; service=standard.",
+      "evidence": []
+    },
+    {
+      "id": "C01-fixed-mobile",
+      "title": "Required name — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a name. error, no quote",
+      "actual": "Observed 2026-11-04T23:52:52.248Z. No quote displayed. Parcel count: 1. Errors: Enter a name.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C02-fixed-mobile",
+      "title": "Parcel count survives email validation — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"invalid\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline Enter a valid email address. error, no quote, parcels=3",
+      "actual": "Observed 2026-11-04T23:52:52.909Z. No quote displayed. Parcel count: 3. Errors: Enter a valid email address.; Check 1 highlighted field..",
+      "evidence": [
+        "evidence/fixed-mobile-C02.jpg"
+      ]
+    },
+    {
+      "id": "C03-fixed-mobile",
+      "title": "Standard base price — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:52:53.673Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C04-fixed-mobile",
+      "title": "Standard additional parcels — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$12.00",
+      "actual": "Observed 2026-11-04T23:52:54.363Z. Displayed total C$12.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C05-fixed-mobile",
+      "title": "Express additional parcels — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$20.00",
+      "actual": "Observed 2026-11-04T23:52:55.011Z. Displayed total C$20.00. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C06-fixed-mobile",
+      "title": "Standard SAVE20 — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$9.60",
+      "actual": "Observed 2026-11-04T23:52:55.666Z. Displayed total C$9.60. Parcel count: 3. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C07-fixed-mobile",
+      "title": "Express SAVE20 — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Express\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$16.00",
+      "actual": "Observed 2026-11-04T23:52:56.312Z. Displayed total C$16.00. Parcel count: 3. Errors: none.",
+      "evidence": [
+        "evidence/fixed-mobile-C07.jpg"
+      ]
+    },
+    {
+      "id": "C08-fixed-mobile",
+      "title": "Unknown coupon — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"1\", \"coupon\": \"NOPE\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline coupon error, no quote",
+      "actual": "Observed 2026-11-04T23:52:57.075Z. No quote displayed. Parcel count: 1. Errors: Coupon not recognized. Use SAVE20 or leave blank.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C09-fixed-mobile",
+      "title": "Minimum accepted weight — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"0.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:52:57.765Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C10-fixed-mobile",
+      "title": "Maximum accepted weight — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Visible total C$8.00",
+      "actual": "Observed 2026-11-04T23:52:58.460Z. Displayed total C$8.00. Parcel count: 1. Errors: none.",
+      "evidence": []
+    },
+    {
+      "id": "C11-fixed-mobile",
+      "title": "Above maximum weight — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"1\", \"weight\": \"10.1\", \"coupon\": \"\"}.",
+        "Click Preview quote."
+      ],
+      "expected": "Inline weight error, no quote",
+      "actual": "Observed 2026-11-04T23:52:59.128Z. No quote displayed. Parcel count: 1. Errors: Enter a weight from 0.1 to 10 kg.; Check 1 highlighted field..",
+      "evidence": []
+    },
+    {
+      "id": "C12-fixed-mobile",
+      "title": "Reset clears populated quote — fixed, 390x844",
+      "status": "pass",
+      "steps": [
+        "Open demo/?build=fixed at 390x844 in the recorded Chrome version.",
+        "Click Reset form.",
+        "Enter {\"name\": \"Sample Tester\", \"email\": \"tester@example.com\", \"service\": \"Standard\", \"parcels\": \"3\", \"weight\": \"1\", \"coupon\": \"SAVE20\"}.",
+        "Click Preview quote.",
+        "Click Reset form after the quote appears."
+      ],
+      "expected": "Empty name/email/weight/coupon, Standard service,1parcel, no quote",
+      "actual": "Observed 2026-11-04T23:53:00.093Z. No quote displayed. Parcel count: 1. Errors: none. Name/email/weight/coupon empty; service=standard.",
+      "evidence": []
+    }
+  ]
+}
