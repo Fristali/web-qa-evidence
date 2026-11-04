@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pickup quote · Synthetic QA fixture</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #18342e; background: #f7f8f4; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: 16px; line-height: 1.5; }
+    .banner { position: sticky; top: 0; z-index: 1; margin: 0; padding: 12px 20px; background: #173e34; color: #fff; text-align: center; font-size: .875rem; }
+    main { max-width: 1000px; margin: auto; padding: 40px 24px 64px; }
+    header { border-bottom: 1px solid #b9c9be; padding-bottom: 24px; margin-bottom: 32px; }
+    .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 12px 0; letter-spacing: -.035em; }
+    h2 { font-size: 1.2rem; margin: 0 0 12px; }
+    p { margin: 8px 0 16px; }
+    a { color: #00644d; text-underline-offset: 3px; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .wide { grid-column: 1 / -1; }
+    label { display: block; margin-bottom: 6px; font-weight: 650; font-size: .95rem; }
+    input, select, button { font: inherit; }
+    input, select { display: block; width: 100%; min-height: 46px; border: 1px solid #82958c; border-radius: 5px; padding: 10px 12px; background: white; color: #18342e; }
+    .hint { display: block; font-size: .85rem; color: #465e53; margin-top: 5px; }
+    .error { color: #9a2424; margin: 6px 0 0; font-size: .9rem; }
+    [aria-invalid="true"] { border: 2px solid #9a2424; }
+    :focus-visible { outline: 3px solid #d39a22; outline-offset: 3px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    button { cursor: pointer; min-height: 46px; padding: 10px 18px; border: 1px solid #173e34; border-radius: 5px; font-weight: 650; }
+    button[type="submit"] { background: #173e34; color: white; }
+    button[type="reset"] { background: transparent; color: #173e34; }
+    button:hover { filter: brightness(.92); }
+    aside { border-left: 1px solid #b9c9be; padding-left: 28px; }
+    dl { margin: 0; }
+    .row { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid #d8e0d8; }
+    dd { margin: 0; text-align: right; }
+    .total { font-weight: 750; font-size: 1.2rem; border-bottom: 0; padding-top: 16px; }
+    #result { margin-top: 32px; padding-top: 24px; border-top: 2px solid #173e34; }
+    #result p { overflow-wrap: anywhere; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #b9c9be; font-size: .85rem; color: #465e53; }
+    [hidden] { display: none !important; }
+    @media (max-width: 650px) {
+      main { padding: 28px 20px 40px; }
+      .workspace { grid-template-columns: 1fr; gap: 32px; }
+      .fields { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      aside { border-left: 0; border-top: 1px solid #b9c9be; padding: 24px 0 0; }
+      .banner { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <p class="banner">Synthetic QA fixture — no booking or payment is sent</p>
+  <main>
+    <header>
+      <div class="eyebrow">Web QA Evidence / Browser practice</div>
+      <h1>Pickup quote</h1>
+      <p>Preview a parcel pickup price using fictional contact details.</p>
+      <p><strong id="build-label">Seeded build · 2 intentional defects</strong> · <a id="build-link" href="?build=fixed">Open fixed reference build</a></p>
+    </header>
+    <div class="workspace">
+      <section aria-labelledby="form-heading">
+        <h2 id="form-heading">Quote details</h2>
+        <p class="hint">Name, email, parcel count and weight are required. Coupon is optional.</p>
+        <form id="quote-form" novalidate>
+          <div class="fields">
+            <div class="wide">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="off" aria-describedby="name-error">
+              <p class="error" id="name-error" hidden></p>
+            </div>
+            <div class="wide">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="off" aria-describedby="email-error">
+              <p class="error" id="email-error" hidden></p>
+            </div>
+            <div>
+              <label for="service">Service</label>
+              <select id="service" name="service"><option value="standard">Standard</option><option value="express">Express</option></select>
+            </div>
+            <div>
+              <label for="parcels">Parcel count</label>
+              <input id="parcels" name="parcels" type="number" min="1" max="5" step="1" value="1" required aria-describedby="parcels-hint parcels-error">
+              <span class="hint" id="parcels-hint">1–5 whole parcels</span>
+              <p class="error" id="parcels-error" hidden></p>
+            </div>
+            <div>
+              <label for="weight">Total weight (kg)</label>
+              <input id="weight" name="weight" type="number" min="0.1" max="10" step="any" required aria-describedby="weight-hint weight-error">
+              <span class="hint" id="weight-hint">0.1–10 kg, inclusive</span>
+              <p class="error" id="weight-error" hidden></p>
+            </div>
+            <div>
+              <label for="coupon">Coupon <span class="hint">Optional</span></label>
+              <input id="coupon" name="coupon" type="text" aria-describedby="coupon-error" autocomplete="off">
+              <p class="error" id="coupon-error" hidden></p>
+            </div>
+          </div>
+          <p id="error-summary" class="error" role="alert" hidden></p>
+          <div class="actions"><button type="submit">Preview quote</button><button type="reset">Reset form</button></div>
+        </form>
+        <section id="result" role="status" aria-live="polite" hidden>
+          <h2>Quote preview</h2>
+          <p id="quote-details"></p>
+          <dl>
+            <div class="row"><dt>Subtotal</dt><dd id="subtotal"></dd></div>
+            <div class="row"><dt>Coupon discount</dt><dd id="discount"></dd></div>
+            <div class="row total"><dt>Total</dt><dd id="total"></dd></div>
+          </dl>
+          <p class="hint">Preview only. No pickup has been booked.</p>
+        </section>
+      </section>
+      <aside aria-labelledby="pricing-heading">
+        <h2 id="pricing-heading">Pricing rules</h2>
+        <dl>
+          <div class="row"><dt>Standard</dt><dd>C$8.00</dd></div>
+          <div class="row"><dt>Express</dt><dd>C$16.00</dd></div>
+          <div class="row"><dt>Each extra parcel</dt><dd>C$2.00</dd></div>
+        </dl>
+        <p class="hint">The first parcel is included. Weight does not change the price within the accepted range.</p>
+        <p>Use <strong>SAVE20</strong> for 20% off the entire quote with either service.</p>
+        <p class="hint">This fixture stores no information and makes no service requests. Reloading clears the form.</p>
+      </aside>
+    </div>
+    <footer>For controlled browser QA practice. Seeded defects and expected behavior are documented in <a href="../docs/demo-requirements.md">demo requirements</a>.</footer>
+  </main>
+  <script>
+    'use strict';
+    const fixed = new URLSearchParams(window.location.search).get('build') === 'fixed';
+    const form = document.getElementById('quote-form');
+    const result = document.getElementById('result');
+    const summary = document.getElementById('error-summary');
+    const fields = ['name', 'email', 'parcels', 'weight', 'coupon'];
+    const field = id => document.getElementById(id);
+    const money = cents => `C$${(cents / 100).toFixed(2)}`;
+    if (fixed) {
+      field('build-label').textContent = 'Fixed reference build';
+      field('build-link').textContent = 'Open seeded build';
+      field('build-link').href = '?build=seeded';
+    }
+    function clearFeedback() {
+      result.hidden = true;
+      summary.hidden = true;
+      summary.textContent = '';
+      fields.forEach(id => {
+        field(id).removeAttribute('aria-invalid');
+        field(`${id}-error`).hidden = true;
+        field(`${id}-error`).textContent = '';
+      });
+    }
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      clearFeedback();
+      const errors = [];
+      const invalid = (id, message) => {
+        field(id).setAttribute('aria-invalid', 'true');
+        field(`${id}-error`).textContent = message;
+        field(`${id}-error`).hidden = false;
+        errors.push(id);
+      };
+      const count = Number(field('parcels').value);
+      const weight = Number(field('weight').value);
+      const coupon = field('coupon').value.trim().toUpperCase();
+      if (!field('name').value.trim()) invalid('name', 'Enter a name.');
+      if (!field('email').value.trim() || !field('email').validity.valid) invalid('email', 'Enter a valid email address.');
+      if (!Number.isInteger(count) || count < 1 || count > 5) invalid('parcels', 'Enter a whole parcel count from 1 to 5.');
+      if (!Number.isFinite(weight) || weight < 0.1 || weight > 10) invalid('weight', 'Enter a weight from 0.1 to 10 kg.');
+      if (coupon && coupon !== 'SAVE20') invalid('coupon', 'Coupon not recognized. Use SAVE20 or leave blank.');
+      if (errors.length) {
+        // Intentional defect 2: the seeded build loses the parcel count on an error.
+        if (!fixed) field('parcels').value = '1';
+        summary.textContent = `Check ${errors.length} highlighted field${errors.length === 1 ? '' : 's'}.`;
+        summary.hidden = false;
+        field(errors[0]).focus();
+        return;
+      }
+      const express = field('service').value === 'express';
+      const subtotal = (express ? 1600 : 800) + (count - 1) * 200;
+      // Intentional defect 1: Express + SAVE20 is not discounted in the seeded build.
+      const discount = coupon === 'SAVE20' && (fixed || !express) ? Math.round(subtotal * 0.2) : 0;
+      field('quote-details').textContent = `${express ? 'Express' : 'Standard'} · ${count} parcel${count === 1 ? '' : 's'} · ${weight} kg`;
+      field('subtotal').textContent = money(subtotal);
+      field('discount').textContent = money(discount);
+      field('total').textContent = money(subtotal - discount);
+      result.hidden = false;
+    });
+    form.addEventListener('reset', () => {
+      clearFeedback();
+      ['quote-details', 'subtotal', 'discount', 'total'].forEach(id => field(id).textContent = '');
+    });
+  </script>
+</body>
+</html>

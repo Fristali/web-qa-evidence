@@ -1,0 +1,43 @@
+{
+  "title": "QA observations template — not executed",
+  "build": "Replace with the exact build identifier or URL",
+  "tested_at": "Not executed — replace with actual execution time after testing",
+  "environment": {
+    "browser": "Not recorded — replace after testing",
+    "os": "Not recorded — replace after testing",
+    "viewports": ["Not recorded — replace after testing"]
+  },
+  "scope": "Planned review of the synthetic pickup quote fixture only",
+  "limitations": [
+    "Template only: no browser cases have been executed or screenshots captured.",
+    "No backend delivery, booking, payment, or production behavior is covered."
+  ],
+  "cases": [
+    {
+      "id": "QUOTE-01",
+      "title": "Standard price with three parcels",
+      "status": "not_run",
+      "steps": [
+        "Open the selected fixture build and enter fictional valid contact details.",
+        "Choose Standard, set parcel count to 3 and total weight to 1 kg, and leave coupon blank.",
+        "Select Preview quote."
+      ],
+      "expected": "Subtotal and total are C$12.00; coupon discount is C$0.00.",
+      "actual": "Not executed.",
+      "evidence": []
+    },
+    {
+      "id": "QUOTE-02",
+      "title": "Express SAVE20 discount",
+      "status": "not_run",
+      "steps": [
+        "Open the selected fixture build and enter fictional valid contact details.",
+        "Choose Express, set parcel count to 3 and total weight to 1 kg, and enter SAVE20.",
+        "Select Preview quote."
+      ],
+      "expected": "Subtotal is C$20.00, coupon discount is C$4.00, and total is C$16.00.",
+      "actual": "Not executed. The documented seeded defect is not an execution result.",
+      "evidence": []
+    }
+  ]
+}
