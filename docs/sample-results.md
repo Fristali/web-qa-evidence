@@ -11,6 +11,10 @@ An AI operator executed twelve logical cases through actual Chrome controls agai
 
 The two seeded defect types are a missed Express discount (C$20 displayed instead of C$16) and loss of the selected parcel count after an email validation error (3 becomes 1). Each reproduced at both widths. Four failed execution rows therefore represent two defect types. All 24 fixed-reference checks passed in this scope.
 
+The seeded Express coupon result is shown below; [the matching fixed reference](../examples/evidence/fixed-desktop-C07.jpg) displays C$16.
+
+![Synthetic seeded build: SAVE20 entered, but Express total remains C$20](../examples/evidence/seeded-desktop-C07.jpg)
+
 - [Portable HTML report](../examples/pickup-report/report.html): download the repository and open locally; GitHub displays HTML source.
 - [CSV ledger](../examples/pickup-report/cases.csv), [report input](../examples/pickup-observed.json), and [raw observations/provenance](../examples/observations.json).
 - [Expected fixture behavior and seeded defects](demo-requirements.md).
