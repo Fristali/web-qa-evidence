@@ -64,7 +64,7 @@ The default build has exactly two intentional defects: Express does not receive 
 
 ## Optional scoped service
 
-A scoped C$149 QA/documentation pilot uses this kit for one agreed journey, twelve cases at two viewport widths, an evidence report and flow guide. Checkout is pending. [Scope, eligibility and contact](docs/pilot.md).
+A scoped C$149 QA/documentation pilot uses this kit for one agreed journey, twelve cases at two viewport widths, an evidence report and flow guide. Inquiries are open. Checkout is issued privately after written scope, access checks and an accepted preview. [Scope, eligibility and contact](docs/pilot.md).
 
 ## Development
 
