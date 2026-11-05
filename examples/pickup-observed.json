@@ -10,7 +10,7 @@
       "390x844 narrow viewport; not a physical phone"
     ]
   },
-  "scope": "Original synthetic fixture, not client work. Twelve logical cases × two viewport sizes × two reference builds = 48 retained execution rows: seeded build 20 pass / 4 fail; fixed build 24 pass. The four failed rows represent two deliberately seeded defect types, each reproduced at both widths. An AI operator executed the checks in the browser. This demonstrates calibration and reporting; it does not establish blind discovery of unknown production defects.",
+  "scope": "Original synthetic fixture, not client work. Twelve logical cases × two viewport sizes × two reference builds = 48 retained execution rows: seeded build 20 pass / 4 fail; fixed build 24 pass. The four failed rows represent two deliberately seeded defect types, each reproduced at both widths. The checks were executed in the browser. This demonstrates calibration and reporting; it does not establish blind discovery of unknown production defects.",
   "limitations": [
     "Synthetic demonstration only; no customer, purchase or revenue.",
     "One installed desktop Chrome and two viewport sizes; no physical phone or cross-browser coverage.",

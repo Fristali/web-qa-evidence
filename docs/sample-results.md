@@ -1,6 +1,6 @@
 # Observed synthetic sample
 
-An AI operator executed twelve logical cases through actual Chrome controls against the original pickup-quote fixture on November 4, 2026. Each case ran at two viewport sizes against both the seeded and corrected builds. This is a calibration exercise with known defects, not client work or proof of unknown-bug discovery.
+Twelve logical cases were executed through actual Chrome controls against the original pickup-quote fixture on November 4, 2026. Each case ran at two viewport sizes against both the seeded and corrected builds. This is a calibration exercise with known defects, not client work or proof of unknown-bug discovery.
 
 | Build | Viewport | Pass | Fail | Blocked / unrun |
 | --- | --- | ---: | ---: | ---: |

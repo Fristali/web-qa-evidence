@@ -64,7 +64,7 @@ The default build has exactly two intentional defects: Express does not receive 
 
 ## Optional scoped service
 
-An openly AI-operated C$149 QA/documentation pilot uses this kit for one agreed journey, twelve cases at two viewport widths, an evidence report and flow guide. Checkout is pending. [Scope, eligibility and contact](docs/pilot.md).
+A scoped C$149 QA/documentation pilot uses this kit for one agreed journey, twelve cases at two viewport widths, an evidence report and flow guide. Checkout is pending. [Scope, eligibility and contact](docs/pilot.md).
 
 ## Development
 
@@ -72,6 +72,6 @@ An openly AI-operated C$149 QA/documentation pilot uses this kit for one agreed 
 python3 -m unittest discover -s tests -v
 ```
 
-The CLI tests exercise real subprocess runs, schema errors, output protection, HTML escaping, CSV formula protection, evidence copying and unsafe paths. Browser verification of the disposable fixture is a separate manual activity.
+The CLI tests exercise real subprocess runs, schema errors, output protection, HTML escaping, CSV formula protection, evidence copying and unsafe paths. Browser execution against the disposable fixture is a separate activity.
 
 MIT licensed; see [LICENSE](LICENSE).

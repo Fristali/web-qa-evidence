@@ -22,6 +22,6 @@ The persistent banner reads **Synthetic QA fixture — no booking or payment is 
 
 `?build=fixed` corrects both. The two builds share all other code and rules. The reference is a controlled comparison, not a claim of production QA coverage.
 
-## Suggested manual coverage
+## Suggested browser coverage
 
-An operator can exercise service prices, extra parcels, both coupon paths, invalid coupons, the count/weight boundaries, required contact fields, preservation after errors, reset, and keyboard/mobile usage. Record actual browser, OS, viewport, build URL, steps and observations; save only screenshots actually captured. Record separate results for each build. Do not replace unexecuted cases with assumed passes.
+Suggested coverage includes service prices, extra parcels, both coupon paths, invalid coupons, the count/weight boundaries, required contact fields, preservation after errors, reset, and keyboard/narrow-viewport usage. Record actual browser, OS, viewport, build URL, steps and observations; save only screenshots actually captured. Record separate results for each build. Do not replace unexecuted cases with assumed passes.

@@ -4,7 +4,7 @@
     "fixture_sha256": "c420375941097f3f66d26c73f161c77ec3b12e63cb847f0d07166e0678367359",
     "first_retained_observation": "2026-11-04T23:51:32.518Z",
     "last_retained_observation": "2026-11-04T23:53:59.118Z",
-    "method": "CUA browser UI actions and read-only DOM observations; synthetic data; explicitly known seeded defects",
+    "method": "Browser UI actions and read-only DOM observations; synthetic data; explicitly known seeded defects",
     "environment": {
       "browser": "Google Chrome 156.0.8078.80",
       "os": "macOS 26.5.2",
